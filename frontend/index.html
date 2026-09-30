@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Tech Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <span class="brand-text">Student Tech Hub</span>
+      </div>
+      <div class="backend-badge">
+        <span class="status-dot" id="status-indicator"></span>
+        <span id="status-text">Backend: Ready</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-content">
+      <span class="pill-tag">Campus Technology Community</span>
+      <h1 class="main-heading">Student Tech Hub</h1>
+      <p class="hero-subtitle">
+        Explore workshops, hackathons, and technical bootcamps to build your skills
+        and connect with fellow student developers.
+      </p>
+
+      <!-- Action Button to Load Events -->
+      <div class="hero-actions">
+        <button id="load-events-btn" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+          </svg>
+          Load Events from Backend
+        </button>
+        <span id="events-count-badge" class="count-badge" style="display: none;">0 Events</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="container main-content">
+    
+    <!-- Events Section -->
+    <section class="section events-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Upcoming Technical Events</h2>
+          <p class="section-desc">Click "Load Events" to fetch real-time listings from the FastAPI backend.</p>
+        </div>
+      </div>
+
+      <!-- Events List / Container -->
+      <div id="events-container" class="events-grid">
+        <!-- Initial placeholder before loading -->
+        <div class="empty-state">
+          <div class="empty-icon">📅</div>
+          <h3>No events loaded yet</h3>
+          <p>Click the <strong>"Load Events from Backend"</strong> button above to retrieve upcoming technical sessions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student Registration Section -->
+    <section class="section register-section">
+      <div class="form-card">
+        <div class="form-header">
+          <span class="pill-tag pill-purple">Join an Event</span>
+          <h2 class="form-title">Student Registration</h2>
+          <p class="form-desc">Sign up with your name and email to secure your spot for upcoming tech workshops.</p>
+        </div>
+
+        <!-- Feedback Alert Container -->
+        <div id="registration-alert" class="alert-box" style="display: none;"></div>
+
+        <!-- Registration Form -->
+        <form id="registration-form" class="registration-form">
+          <div class="form-group">
+            <label for="student-name">Student Full Name</label>
+            <input 
+              type="text" 
+              id="student-name" 
+              name="name" 
+              placeholder="e.g., Alex Johnson" 
+              required
+              autocomplete="name"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="student-email">Email Address</label>
+            <input 
+              type="email" 
+              id="student-email" 
+              name="email" 
+              placeholder="e.g., alex.johnson@university.edu" 
+              required
+              autocomplete="email"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="event-select">Select Event (Optional)</label>
+            <select id="event-select" name="event_id">
+              <option value="">General Registration / All Events</option>
+            </select>
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn btn-submit">
+            <span class="btn-text">Submit Registration</span>
+            <span class="btn-loader" style="display: none;">Processing...</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p><strong>Student Tech Hub</strong> • Full-stack demo powered by Python (FastAPI) and vanilla HTML, CSS & JavaScript.</p>
+      <p class="footer-links">
+        API running at <code id="api-url-display">http://127.0.0.1:8000</code> • 
+        <a href="http://127.0.0.1:8000/docs" target="_blank" rel="noopener noreferrer">FastAPI Swagger Docs</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
